@@ -11,6 +11,8 @@
  *
  */
 
+const { Polygon } = require('./polygon');
+
 /*
  * Define a rectangle class that has the following properties:
  *  1) Inherits (extends) from the Polygon class
@@ -61,7 +63,10 @@ class Rectangle extends Polygon {
    * the array of 4 numbers
    */
   constructor(height, width) {
-    // write your code here
+    super([height, width, height, width]);
+    this.height = height;
+    this.width = width;
+    this.name = 'Rectangle';
   }
 
   /**
@@ -69,7 +74,17 @@ class Rectangle extends Polygon {
    * @returns {boolean} true if the height and width are both a number > 0
    */
   isValid() {
-    // write your code here
+    let sidesOverZero = 0;
+    let valid = false;
+    this.sides.forEach((side) => {
+      if (side > 0) {
+        sidesOverZero += 1;
+      }
+    });
+    if (sidesOverZero === 4) {
+      valid = true;
+    }
+    return valid;
   }
 
   /**
@@ -79,7 +94,11 @@ class Rectangle extends Polygon {
    * otherwise return 0
    */
   area() {
-    // write your code here
+    let area = 0;
+    if (this.Rectangle.isValid()) {
+      area = this.width * this.height;
+    }
+    return area;
   }
 }
 
