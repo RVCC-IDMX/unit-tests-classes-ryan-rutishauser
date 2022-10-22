@@ -52,7 +52,9 @@ class Triangle extends Polygon {
    * must set the name to 'Triangle'
    */
   constructor(sides) {
-    // write your code here
+    super(sides);
+    this.sides = sides;
+    this.name = 'Triangle';
   }
 
   /**
@@ -73,7 +75,32 @@ class Triangle extends Polygon {
    * than the length of the third side.
    */
   isValid() {
-    // write your code here
+    let valid = true;
+    if (!Array.isArray(this.sides)) {
+      valid = false;
+      return valid;
+    }
+    if (this.sides.length !== 3) {
+      valid = false;
+      return valid;
+    }
+    if (!(this.sides.every((x) => x > 0))) {
+      valid = false;
+      return valid;
+    }
+    if (this.sides[0] >= (this.sides[1] + this.sides[2])) {
+      valid = false;
+      return valid;
+    }
+    if (this.sides[1] >= (this.sides[0] + this.sides[2])) {
+      valid = false;
+      return valid;
+    }
+    if (this.sides[2] >= (this.sides[0] + this.sides[1])) {
+      valid = false;
+      return valid;
+    }
+    return valid;
   }
 }
 
