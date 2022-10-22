@@ -95,7 +95,7 @@ class Rectangle extends Polygon {
    */
   area() {
     let area = 0;
-    if (this.Rectangle.isValid()) {
+    if (this.isValid()) {
       area = this.width * this.height;
     }
     return area;

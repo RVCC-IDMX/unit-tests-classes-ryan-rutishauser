@@ -26,18 +26,14 @@
  *
  */
 class Thermometer {
-  #celcius;
-  #kelvin;
-  #fahrenheit;
+  #celsius;
 
   /**
    * @constructor
    * @param {number} celsius
    */
   constructor(celsius) {
-    this.#celcius = celsius;
-    this.#kelvin = this.celsius + 273.15;
-    this.fahrenheit = ((this.#celcius * (9 / 5)) + 32);
+    this.#celsius = celsius;
   }
 
   /*  -------- celsius -------------------*/
@@ -48,7 +44,7 @@ class Thermometer {
    * @description - returns the celsius temperature
    * */
   get celsius() {
-    return this.celcius;
+    return this.#celsius;
   }
 
   /**
@@ -58,7 +54,7 @@ class Thermometer {
    * @description - sets the celsius temperature
    */
   set celsius(tempCelsius) {
-    this.celsius = tempCelsius;
+    this.#celsius = tempCelsius;
   }
 
   /*  -------- kelvin -------------------*/
@@ -69,7 +65,7 @@ class Thermometer {
    * @description - returns the kelvin temperature
    */
   get kelvin() {
-    return this.#kelvin;
+    return (this.#celsius + 273.15);
   }
 
   /**
@@ -79,7 +75,7 @@ class Thermometer {
    * @description - sets the kelvin temperature
    */
   set kelvin(tempKelvin) {
-    this.#kelvin = tempKelvin;
+    this.#celsius = tempKelvin - 273.15;
   }
 
   /*  -------- fahrenheit -------------------*/
@@ -90,7 +86,7 @@ class Thermometer {
    * @description - returns the fahrenheit temperature
    */
   get fahrenheit() {
-    return this.#fahrenheit;
+    return ((this.#celsius * (9 / 5)) + 32);
   }
 
   /**
@@ -100,7 +96,7 @@ class Thermometer {
    * @description - sets the fahrenheit temperature
    */
   set fahrenheit(tempFahrenheit) {
-    this.#fahrenheit = tempFahrenheit;
+    this.#celsius = ((tempFahrenheit - 32) * (5 / 9));
   }
 
   /**
@@ -119,15 +115,18 @@ class Thermometer {
    */
   toString(unit) {
     if (unit === 'K') {
-      return (`${this.#kelvin}K`);
+      return (`${this.kelvin}K`);
     }
-    else if (unit === 'F') {
-      return (`${this.#fahrenheit}°F`);
+    if (unit === 'F') {
+      return (`${this.fahrenheit}°F`);
     }
-    else {
-      return (`${this.#celcius}°C`);
-    }
+
+    return (`${this.#celsius}°C`);
   }
+}
+
+const thermometer = new Thermometer(0);
+thermometer.kelvin = 0;
 
 module.exports = {
   Thermometer,
