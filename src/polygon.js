@@ -44,8 +44,8 @@ class Polygon {
    * @returns {number} - value of the perimeter (sum of all sides)
    */
   perimeter() {
-    let perimeter = 0
-    this.sides.forEach(side => {
+    let perimeter = 0;
+    this.sides.forEach((side) => {
       perimeter += side;
     });
     return perimeter;

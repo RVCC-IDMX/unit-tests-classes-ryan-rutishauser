@@ -78,8 +78,6 @@ class Square extends Rectangle {
   }
 }
 
-const square1 = new Square(12);
-
 module.exports = {
   Square,
 };
